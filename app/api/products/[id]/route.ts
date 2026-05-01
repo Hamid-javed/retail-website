@@ -57,7 +57,7 @@ export async function PUT(
     return NextResponse.json(product)
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json({ error: 'Invalid input', details: error.errors }, { status: 400 })
+      return NextResponse.json({ error: 'Invalid input', details: error.issues }, { status: 400 })
     }
     return NextResponse.json({ error: 'Failed to update product' }, { status: 500 })
   }

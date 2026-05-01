@@ -42,11 +42,10 @@ const ProductSchema = new Schema<ProductDocument>(
   { timestamps: true }
 )
 
-ProductSchema.pre('save', function (next) {
+ProductSchema.pre('save', async function () {
   if (this.isModified('name') && !this.slug) {
     this.slug = slugify(this.name, { lower: true, strict: true })
   }
-  next()
 })
 
 const Product: Model<ProductDocument> =
