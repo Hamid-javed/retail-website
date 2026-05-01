@@ -3,7 +3,7 @@ import { isAdminRequest } from '@/lib/apiAuth'
 import { uploadImage } from '@/lib/upload'
 
 export async function POST(request: NextRequest) {
-  if (!isAdminRequest(request)) {
+  if (!(await isAdminRequest(request))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

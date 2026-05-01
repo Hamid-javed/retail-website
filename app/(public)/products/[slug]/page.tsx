@@ -4,6 +4,7 @@ import { connectDB } from '@/lib/db'
 import Product from '@/lib/models/Product'
 import { ImageGallery } from '@/components/public/ImageGallery'
 import { WhatsAppButton } from '@/components/public/WhatsAppButton'
+import { BackButton } from '@/components/public/BackButton'
 import { Badge } from '@/components/ui/Badge'
 
 interface Params {
@@ -33,7 +34,10 @@ export default async function ProductDetailPage({ params }: Params) {
   if (!product) notFound()
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
+    <div className="max-w-6xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <BackButton />
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
         <ImageGallery images={product.images} name={product.name} />
 

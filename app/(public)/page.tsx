@@ -33,19 +33,19 @@ export default async function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 bg-gradient-to-b from-gray-50 to-white">
-        <p className="text-sm font-medium text-gray-400 tracking-widest uppercase mb-4">Luxury Dress</p>
-        <h1 className="text-5xl sm:text-7xl font-bold text-gray-900 leading-tight max-w-2xl mb-6">
+      <section className="min-h-[70vh] flex flex-col items-center justify-center text-center px-4 bg-white">
+        <p className="text-xs font-semibold tracking-[0.25em] uppercase mb-4 text-neutral-400">Luxury Dress</p>
+        <h1 className="text-5xl sm:text-7xl font-bold leading-tight max-w-2xl mb-6 text-black">
           Rent or Own Your Perfect Dress
         </h1>
-        <p className="text-lg text-gray-500 max-w-md mb-10">
+        <p className="text-lg text-neutral-500 max-w-md mb-10">
           Premium dresses for every occasion. Rent in Lebanon or purchase internationally.
         </p>
         <RegionSelector />
         <div className="mt-8 flex gap-4">
           <Link
             href="/products"
-            className="bg-black text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-gray-800 transition-colors"
+            className="px-8 py-3 rounded-full text-sm font-semibold bg-black text-white hover:bg-neutral-800 transition-colors"
           >
             Browse Collection
           </Link>
@@ -53,19 +53,24 @@ export default async function HomePage() {
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''}?text=Hi%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20dresses`}
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-gray-300 text-gray-700 px-8 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors"
+            className="px-8 py-3 rounded-full text-sm font-medium border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors"
           >
             Contact Us
           </a>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="border-t border-neutral-100" />
+      </div>
+
       {/* Featured Products */}
       {featured.length > 0 && (
         <section className="max-w-6xl mx-auto px-4 py-16">
           <div className="flex items-baseline justify-between mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">Latest Arrivals</h2>
-            <Link href="/products" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+            <h2 className="text-2xl font-bold text-black">Latest Arrivals</h2>
+            <Link href="/products" className="text-sm text-neutral-500 hover:text-black transition-colors">
               View all →
             </Link>
           </div>
@@ -78,13 +83,13 @@ export default async function HomePage() {
       )}
 
       {/* How it works */}
-      <section className="bg-gray-50 py-16">
+      <section className="py-16 bg-neutral-50 border-t border-neutral-100">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">How It Works</h2>
+          <h2 className="text-2xl font-bold text-black text-center mb-12">How It Works</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-black text-white w-7 h-7 rounded-full flex items-center justify-center text-xs">🇱🇧</span>
+              <h3 className="font-semibold text-black mb-4 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-black flex items-center justify-center text-xs text-white">🇱🇧</span>
                 Renting in Lebanon
               </h3>
               <ol className="flex flex-col gap-4">
@@ -93,8 +98,8 @@ export default async function HomePage() {
                   'Contact us on WhatsApp to confirm availability and dates',
                   'Receive your dress, wear it, and return it',
                 ].map((step, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-gray-600">
-                    <span className="bg-gray-200 text-gray-700 w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">
+                  <li key={i} className="flex gap-3 text-sm text-neutral-600">
+                    <span className="bg-neutral-200 text-neutral-700 w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">
                       {i + 1}
                     </span>
                     {step}
@@ -103,8 +108,8 @@ export default async function HomePage() {
               </ol>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <span className="bg-black text-white w-7 h-7 rounded-full flex items-center justify-center text-xs">🌍</span>
+              <h3 className="font-semibold text-black mb-4 flex items-center gap-2">
+                <span className="w-7 h-7 rounded-full bg-black flex items-center justify-center text-xs text-white">🌍</span>
                 Buying Internationally
               </h3>
               <ol className="flex flex-col gap-4">
@@ -112,8 +117,8 @@ export default async function HomePage() {
                   'Browse and select your dress',
                   'Contact us on WhatsApp to arrange purchase and shipping',
                 ].map((step, i) => (
-                  <li key={i} className="flex gap-3 text-sm text-gray-600">
-                    <span className="bg-gray-200 text-gray-700 w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">
+                  <li key={i} className="flex gap-3 text-sm text-neutral-600">
+                    <span className="bg-neutral-200 text-neutral-700 w-6 h-6 rounded-full flex items-center justify-center text-xs shrink-0 font-bold">
                       {i + 1}
                     </span>
                     {step}

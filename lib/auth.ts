@@ -1,20 +1,26 @@
-import jwt from 'jsonwebtoken'
+import { SignJWT, jwtVerify } from 'jose'
 
 const COOKIE_NAME = 'admin_token'
 
-export function signToken(): string {
+function getSecret(): Uint8Array {
   const secret = process.env.JWT_SECRET
   if (!secret) throw new Error('JWT_SECRET is not set')
-  return jwt.sign({ admin: true }, secret, { expiresIn: '7d' })
+  return new TextEncoder().encode(secret)
 }
 
-export function verifyToken(token: string): jwt.JwtPayload | null {
+export async function signToken(): Promise<string> {
+  return new SignJWT({ admin: true })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('7d')
+    .sign(getSecret())
+}
+
+export async function verifyToken(token: string): Promise<boolean> {
   try {
-    const secret = process.env.JWT_SECRET
-    if (!secret) return null
-    return jwt.verify(token, secret) as jwt.JwtPayload
+    await jwtVerify(token, getSecret())
+    return true
   } catch {
-    return null
+    return false
   }
 }
 
